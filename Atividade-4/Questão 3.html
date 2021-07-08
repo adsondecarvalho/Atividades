@@ -1,0 +1,60 @@
+﻿<!--
+ Atividade: 4
+------------------
+ Questão: 3
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triângulo</title>
+</head>
+
+<body>
+    <h1>Programa Lados de um Triângulo</h1>
+
+    <p>Lado A: <input type="text" id="inA"></p>
+    <p>Lado B: <input type="text" id="inB"></p>
+    <p>Lado C: <input type="text" id="inC"></p>
+
+    <p><input type="button" value="Verificar Lados" id="btVerificar"></p>
+
+    <h3 id="outResultado"></h3>
+    <h3 id="outTipo"></h3>
+
+    <script>
+        function verificarTriangulo() {
+            var ladoA = Number(document.getElementById("inA").value)
+            var ladoB = Number(document.getElementById("inB").value)
+            var ladoC = Number(document.getElementById("inC").value)
+
+            if (ladoA == 0 || ladoB == 0 || ladoC == 0 || isNaN(ladoA) || isNaN(ladoB) || isNaN(ladoC)) {
+                alert("Informe os lados corretamente...")
+                inA.focus()
+                return
+            }
+            if (ladoA > ladoB + ladoC || ladoB > ladoA + ladoC || ladoC > ladoA + ladoB) { // Se for true, um lado será maior que os outros dois, não podendo formar um triângulo
+                outResultado.textContent = "Os valores informados não formam um triângulo."
+                outTipo.textContent = ""
+            } else { // Se for false, irá calcular se é um triângulo Equilátero, Isósceles ou Escaleno
+                outResultado.textContent = "Lados podem formar um triângulo."
+
+                if (ladoA == ladoB && ladoA == ladoC) { // Os três lados iguais
+                    outTipo.textContent = "Tipo: Equilátero"
+                } else if (ladoA == ladoB || ladoA == ladoC || ladoC == ladoB) { // Dois lados iguais e um diferente
+                    outTipo.textContent = "Tipo: Isósceles"
+                } else { //Os três lados diferentes
+                    outTipo.textContent = "Tipo: Escaleno"
+                }
+            }
+        }
+        var btVerificar = document.getElementById("btVerificar").addEventListener("click", verificarTriangulo)
+    </script>
+
+</body>
+
+</html>

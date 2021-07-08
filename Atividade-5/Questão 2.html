@@ -1,0 +1,23 @@
+﻿<script>
+    //Atividade: 5
+    //-----------------
+    //Questão: 2
+
+    var plano = prompt("Informe seu plano de trabalho: ")
+    var salario = Number(prompt("Informe seu salário: "))
+    var aumento
+    switch (plano) {
+        case "A":
+            aumento = salario * 1.1
+            break
+        case "B":
+            aumento = salario * 1.2
+            break
+        case "C":
+            aumento = salario * 1.3
+            break
+        default:
+            alert("Seu plano de trabalho é inválido para os disponíveis (A, B e C)")
+    }
+    alert("Seu salário passa a ser: R$" + aumento.toFixed(2))
+</script>

@@ -1,0 +1,68 @@
+﻿<!--
+ Atividade: 4
+------------------
+ Questão: 2
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aumento Salarial</title>
+</head>
+
+<body>
+    <h1>Cálcule seu aumento salarial</h1>
+    <p>Informe seu salário atual: <input type="text" id="inSalario"></p>
+    <p>Qual a sua situação na empresa: <br>
+        <input type="radio" name="situação" id="rbEstagiario"> Sou estagiário (5%) <br>
+        <input type="radio" name="situação" id="rbTemporario"> Tenho contrato temporário (8%) <br>
+        <input type="radio" name="situação" id="rbEfetivo"> Sou Efetivo (15%)
+    </p>
+    <p>
+        <input type="button" value="Calcular Novo Salário" id="btCalcular">
+        <input type="button" value="Limpar Campos" id="btLimpar">
+    </p>
+    <h3 id="outSalario"></h3>
+
+    <script>
+        function calcularSalario() {
+            var Salario = Number(document.getElementById("inSalario").value)
+            var Estagiario = document.getElementById("rbEstagiario").checked
+            var Temporario = document.getElementById("rbTemporario").checked
+            var Efetivo = document.getElementById("rbEfetivo").checked
+
+            if (Salario == 0 || isNaN(Salario) || (Estagiario == false && Temporario == false && Efetivo == false)) {
+                alert("Por favor, informe o salário e a situação corretamente...")
+                inSalario.focus()
+                return
+            }
+            if (Estagiario) {
+                var salario = Salario * 1.05
+            }
+            else if (Temporario) {
+                var salario = Salario * 1.08
+            }
+            else {
+                var salario = Salario * 1.15
+            }
+            outSalario.textContent = "Seu novo salário será de R$ " + salario.toFixed(2)
+        }
+        var btCalcular = document.getElementById("btCalcular").addEventListener("click", calcularSalario)
+        function limparCampos() {
+            inSalario.value = ""
+            rbEstagiario.checked = false
+            rbTemporario.checked = false
+            rbEfetivo.checked = false
+            outSalario.textContent = ""
+            inSalario.focus()
+        }
+        var btLimpar = document.getElementById("btLimpar").addEventListener("click", limparCampos)
+    </script>
+
+</body>
+
+</html>

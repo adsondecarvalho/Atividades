@@ -1,0 +1,23 @@
+﻿<script>
+    //Atividade: 6
+    //-----------------
+    //Questão: 2
+
+    var numero = Number(prompt("Digite um número: "))
+
+    while (numero == 0 || isNaN(numero)) {
+        alert("Digite um número válido...")
+        var numero = Number(prompt("Digite um número: "))
+    }
+    var i = 0
+    var numeros = "Números de 0 a " + numero + ": "
+    while (i <= numero) {
+        if (i == numero) {
+            numeros = numeros + i + "."
+        } else {
+            numeros = numeros + i + ", "
+        }
+        i++
+    }
+    alert(numeros)
+</script>
