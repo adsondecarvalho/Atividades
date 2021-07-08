@@ -1,0 +1,43 @@
+﻿<!--
+ Atividade: 2
+------------------
+ Questão: 1
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 1</title>
+</head>
+
+<body>
+    <h1>Restaurante LGDS</h1>
+    <p>
+        Buffet por Quilo:
+        <input type="text" id="inQuilo">
+    </p>
+    <p>
+        Consumo do Cliente(gr):
+        <input type="text" id="inGramas">
+    </p>
+    <p><input type="button" value="Calcular Preço" id="btCalcular"></p>
+    <p id="outValor"></p>
+
+    <script>
+        function calcularValor() {
+            var Quilo = Number(document.getElementById("inQuilo").value)
+            var Gramas = Number(document.getElementById("inGramas").value)
+            var outValor = document.getElementById("outValor")
+
+            var valor = (Quilo / 1000) * Gramas
+            outValor.textContent = "Valor a pagar R$: " + valor.toFixed(2)
+        }
+        var btCalcular = document.getElementById("btCalcular").addEventListener("click", calcularValor)
+    </script>
+</body>
+
+</html

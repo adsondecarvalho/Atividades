@@ -1,0 +1,49 @@
+﻿<!--
+ Atividade: 2
+------------------
+ Questão: 1
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 2</title>
+</head>
+
+<body>
+    <h1>Delta da Equação de 2º grau</h1>
+    <h2>&Delta; = b<sup>2</sup> - 4 . a . c</h2>
+    <p>
+        Valor de a:
+        <input type="number" id="inA">
+    </p>
+    <p>
+        Valor de b:
+        <input type="number" id="inB">
+    </p>
+    <p>
+        Valor de c:
+        <input type="number" id="inC">
+    </p>
+    <p><input type="button" value="Calcular o &Delta;" id="btCalcular"></p>
+    <p id="outDelta"></p>
+
+    <script>
+        function calcularDelta() {
+            var a = Number(document.getElementById("inA").value)
+            var b = Number(document.getElementById("inB").value)
+            var c = Number(document.getElementById("inC").value)
+            var outDelta = document.getElementById("outDelta")
+
+            var delta = (b ** 2) - 4 * a * c
+            outDelta.textContent = "Delta = " + delta
+        }
+        var btCalcular = document.getElementById("btCalcular").addEventListener("click", calcularDelta)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+﻿<!--
+ Atividade: 3
+------------------
+ Questão: 1
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConTime</title>
+</head>
+
+<body>
+    <h1>Corrida de rua</h1>
+    <p>
+        Tempo em segundos:
+        <input type="number" id="inSegundos">
+        <input type="button" value="Converter" id="btConverter">
+    </p>
+    <p id="outTempo"></p>
+    <script>
+        function converterTempo() {
+            var Segundos = Number(document.getElementById("inSegundos").value)
+            var outTempo = document.getElementById("outTempo")
+
+            var minutos = Math.floor(Segundos / 60)
+            var segundos = Segundos % 60
+            outTempo.textContent = "Seu tempo foi de " + minutos + " minuto(s) e " + segundos + " segundo(s) "
+        }
+        var btConverter = document.getElementById("btConverter").addEventListener("click", converterTempo)
+    </script>
+</body>
+
+</html>
