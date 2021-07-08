@@ -1,2 +1,2 @@
-﻿# Atividades de Introdução a Programação
-Todas as atividades de Introdução á Programação da turma de 2020.1
+﻿# Atividades de Introdução à Programação
+Todas as atividades de Introdução à Programação da turma de 2020.1
