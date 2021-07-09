@@ -1,0 +1,132 @@
+﻿<!--
+ Nome: Lukas Gomes
+ Turma: 911-A
+ Data: 06/05/21
+ Atividade: 12
+ -----------------
+ Questão: 1
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 12</title>
+</head>
+
+<body>
+    <h1>Programa e-mail e senha</h1>
+    <p>Selecione vínculo:
+        <select id="inVinculo">
+            <option value="aluno"> Aluno </option>
+            <option value="professor"> Professor </option>
+            <option value="administracao"> Administrativo </option>
+        </select>
+    </p>
+    <p>Nome:
+        <input type="text" id="inNome">
+        <input type="button" value="Gerar e-mail e senha" id="btGerar">
+    </p>
+    <h3 id="outEmail"></h3>
+    <h3 id="outSenha"></h3>
+
+    <script>
+        var inVinculo = document.getElementById("inVinculo")
+        var inNome = document.getElementById("inNome")
+
+        inNome.addEventListener("focus", function () {
+            inNome.placeholder = "Digite o nome completo"
+        })
+
+        inNome.addEventListener("blur", function () {
+            inNome.placeholder = ""
+        })
+
+        inNome.addEventListener("keypress", function (tecla) {
+            if (tecla.keyCode == 13) {
+                obterEntradas()
+            }
+        })
+
+        function obterEntradas() {
+            var nome = inNome.value
+
+            if (nome == "" || nome.indexOf(" ") == -1) {
+                alert("Informe o nome completo")
+                inNome.focus()
+                return
+            }
+
+            gerarSenha(nome)
+
+            var vinculo = inVinculo.selectedIndex
+            switch (vinculo) {
+                case 0:
+                    emailAluno(nome)
+                    break;
+                case 1:
+                    emailProf(nome)
+                    break;
+                case 2:
+                    emailAdm(nome)
+                    break;
+            }
+        }
+        var btGerar = document.getElementById("btGerar")
+        btGerar.addEventListener("click", obterEntradas)
+
+        function gerarSenha(nome) {
+            outSenha.textContent = "Senha inicial: " + obterSobrenome(nome) + contarVogais(nome)
+        }
+
+        function obterSobrenome(nome) {
+            var partes = nome.split(" ")
+            var tam = partes.length
+            var sobrenome = partes[tam - 1]
+            return sobrenome
+        }
+
+        function contarVogais(nome) {
+            var tam = nome.length
+            var j = 0
+
+            for (var i = 0; i < tam; i++) {
+                if (nome.charAt(i).toLowerCase() == "a" || nome.charAt(i).toLowerCase() == "e" || nome.charAt(i).toLowerCase() == "i" || nome.charAt(i).toLowerCase() == "o" || nome.charAt(i).toLowerCase() == "u") {
+                    j++
+                }
+            }
+            return j < 10 ? "0" + j : j
+        }
+
+        function emailAluno(nome) {
+            var partes = nome.split(" ")
+            var tam = partes.length
+            var iniciais = ""
+
+            for (var i = 0; i < tam - 1; i++) {
+                iniciais += partes[i].charAt(0)
+            }
+
+            var email = iniciais + obterSobrenome(nome) + "@ifal.edu.br"
+            outEmail.textContent = email.toLowerCase()
+        }
+
+        function emailProf(nome) {
+            var priEspaço = nome.indexOf(" ")
+            var priNome = nome.substr(0, priEspaço)
+            var email = priNome + "." + obterSobrenome(nome) + "@ifal.edu.br"
+            outEmail.textContent = email.toLowerCase()
+        }
+
+        function emailAdm(nome) {
+            var priEspaço = nome.indexOf(" ")
+            var priNome = nome.substr(0, priEspaço)
+            var email = priNome + "_adm@ifal.edu.br"
+            outEmail.textContent = email.toLowerCase()
+        }
+    </script>
+</body>
+
+</html>
