@@ -1,0 +1,54 @@
+﻿<!--
+ Atividade: 9
+ -----------------
+ Questão: 1
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ref Bib</title>
+</head>
+
+<body>
+    <h1>Referência Bibliográfica</h1>
+
+    <p>Nome do autor:
+        <input type="text" id="inNome">
+    </p>
+    <p><input type="button" value="Gerar Citação Bibliográfica" id="btGerar"></p>
+
+    <h3>Citação Bibliográfica:
+        <span id="outCitação"></span>
+    </h3>
+
+    <script>
+        function gerarCitaçao() {
+            var nome = document.getElementById("inNome").value
+
+            if (nome == "" || nome.indexOf(" ") == -1) {
+                alert("Informe o nome completo do autor")
+                inNome.focus()
+                return
+            }
+
+            var partes = nome.split(" ")
+            var citaçao = ""
+            var tam = partes.length
+
+            for (var i = 0; i < tam - 1; i++) {
+                citaçao += partes[i].charAt(0) + ". "
+            }
+
+            var resposta = partes[tam - 1] + ", " + citaçao
+
+            outCitação.textContent = resposta.toUpperCase()
+        }
+        var btGerar = document.getElementById("btGerar").addEventListener("click", gerarCitaçao)
+    </script>
+</body>
+
+</html>

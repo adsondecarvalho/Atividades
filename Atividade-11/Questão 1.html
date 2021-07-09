@@ -1,0 +1,16 @@
+﻿<script>
+    //Atividade: 11
+    //-----------------
+    //Questão: 1
+
+    var nome = prompt("Nome completo do funcionário:")
+    var tam = nome.length
+    var j = 0
+
+    for (var i = 0; i < tam; i++) {
+        if (nome.charAt(i).toLocaleUpperCase() == "A" || nome.charAt(i).toLocaleUpperCase() == "E" || nome.charAt(i).toLocaleUpperCase() == "I" || nome.charAt(i).toLocaleUpperCase() == "O" || nome.charAt(i).toLocaleUpperCase() == "U") {
+            j++
+        }
+    }
+    alert("O nome '" + nome + "' tem " + j + " vogais")
+</script>
