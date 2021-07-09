@@ -1,1 +1,22 @@
-﻿
+﻿<script>
+    //Atividade: 6
+    //-----------------
+    //Questão: 6
+
+    var numero1 = Number(prompt("Digite o primeiro número: "))
+
+    while (isNaN(numero1)) {
+        alert("Digite um número válido...")
+        var numero1 = Number(prompt("Digite o primeiro número: "))
+    }
+
+    var numero2 = Number(prompt("Digite o segundo número: "))
+
+    while (numero2 == 0 || isNaN(numero2)) {
+        alert("Digite um número válido...")
+        var numero2 = Number(prompt("Digite o segundo número: "))
+    }
+
+    var divisão = numero1 / numero2
+    alert(numero1 + " dividido por " + numero2 + " é: " + divisão)
+</script>

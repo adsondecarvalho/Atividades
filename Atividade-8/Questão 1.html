@@ -1,0 +1,17 @@
+﻿<script>
+    //Atividade: 8
+    //-----------------
+    //Questão: 1
+
+    var sorteio
+    var x = prompt("Digite um número:")
+    sorteio = Math.floor(Math.random() * 101)
+    while (x != sorteio) {
+        if (x > sorteio) {
+            x = prompt("Tente um número MENOR que " + x)
+        } else {
+            x = prompt("Tente um número MAIOR que " + x)
+        }
+    }
+    alert("Parabéns! O número sorteado foi " + sorteio)
+</script>

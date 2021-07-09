@@ -1,0 +1,21 @@
+﻿<script>
+    //Atividade: 7
+    //-----------------
+    //Questão: 5
+
+    var numero
+    var soma = 0
+    var i = 0
+    var media
+    numero = Number(prompt("Digite um número"))
+
+    while (numero != 0) {
+        soma = soma + numero
+        i++
+        document.write(numero + "<br>")
+        numero = Number(prompt("Digite outro número"))
+    }
+    media = soma / i
+    document.write("O somatório foi: " + soma + "<br>")
+    document.write("A média aritmética é: " + media.toFixed(1))
+</script>

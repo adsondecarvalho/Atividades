@@ -1,0 +1,27 @@
+﻿<script>
+    //Atividade: 8
+    //-----------------
+    //Questão: 2
+
+    alert("Digite 0 para sair")
+    do {
+        var numero = Number(prompt("Digite um número: "))
+
+        if (numero == 0 || isNaN(numero)) {
+            var sair = confirm("Deseja sair?")
+            if (sair) {
+                break
+            } else {
+                continue
+            }
+        }
+        var numeros = "Os divisores de " + numero + " são: " + "\n"
+        for (var i = 1; i <= numero; i = i + 1) {
+            if (numero % i == 0) {
+                numeros = numeros + i + "\n"
+            }
+        }
+        alert(numeros)
+    } while (true)
+    alert("Até logo...")
+</script>

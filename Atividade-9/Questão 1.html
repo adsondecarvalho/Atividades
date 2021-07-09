@@ -1,0 +1,112 @@
+﻿<!--
+ Atividade: 9
+ ------------------
+ Questão: 1
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOGOS ELIMINATÓRIOS</title>
+</head>
+
+<body>
+    <h1>Jogos Eliminatórios</h1>
+    <p>Clube:
+        <input type="text" id="inNome" autofocus>
+        <input type="button" value="Adicionar" id="btAdicionar">
+        <input type="button" value="Limpar Clubes" id="btLimpar">
+    </p>
+    <p>
+        <input type="button" value="Listar Clubes" id="btListar">
+        <input type="button" value="Mostrar Tabela de Jogos" id="btMontar">
+    </p>
+    <pre id="outLista"></pre>
+    <pre id="outJogos"></pre>
+
+    <script>
+        var Clubes = []
+        var nomeClubes = document.getElementById("inNome")
+
+        function adicionarClube() {
+            var nome = nomeClubes.value
+
+            if (nome == "") {
+                alert("informe um nome de clube válido...")
+                inNome.focus()
+                return
+            }
+            Clubes.push(nome) // adiciona o nome no final do vetor
+
+            // variável que concatena os clubes
+            var lista = ""
+
+            //percorre os elementos do vetor
+            for (i = 0; i < Clubes.length; i++) {
+                lista += (i + 1) + ". " + Clubes[i] + "\n"
+            }
+
+            outLista.textContent = lista
+            outJogos.textContent = ""
+
+            inNome.value = ""
+            inNome.focus()
+        }
+        var btAdicionar = document.getElementById("btAdicionar").addEventListener("click", adicionarClube)
+
+        function listarClubes() {
+            // verifica se o vetor está vazio
+            if (Clubes.length == 0) {
+                alert("Não há clubes na lista...")
+                inNome.focus()
+                return
+            }
+
+            // variável que concatena os clubes 
+            var lista = ""
+
+            //percorre os elementos do vetor
+            for (i = 0; i < Clubes.length; i++) {
+                lista += (i + 1) + ". " + Clubes[i] + "\n"
+            }
+
+            outLista.textContent = lista
+            outJogos.textContent = ""
+
+            inNome.value = ""
+            inNome.focus()
+        }
+        var btListar = document.getElementById("btListar").addEventListener("click", listarClubes)
+
+        function mostrarTabela() {
+            // verifica se o vetor está vazio ou se é ímpar
+            if (Clubes.length == 0 || Clubes.length % 2 == 1) {
+                alert("Quantidade de clubes é ímpar, impossível gerar tabela")
+                inNome.focus()
+                return
+            }
+            // variável que concatena os jogos da tabela
+            var tabela = ""
+            var metade = Clubes.length / 2
+
+            //percorre os elementos do vetor
+            for (var i = 0; i < metade; i++) {
+                tabela += (i + 1) + ". " + Clubes[i] + " x " + Clubes[Clubes.length - i - 1] + "\n"
+            }
+            outJogos.textContent = tabela
+            outLista.textContent = ""
+        }
+        var btMontar = document.getElementById("btMontar").addEventListener("click", mostrarTabela)
+
+        function limparClubes() {
+            location.reload() // recarrega a página
+        }
+        var btLimpar = document.getElementById("btLimpar")
+        btLimpar.addEventListener("click", limparClubes)
+    </script>
+</body>
+
+</html>

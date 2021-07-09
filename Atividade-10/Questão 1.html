@@ -1,0 +1,97 @@
+﻿<!--
+ Atividade: 10
+ ------------------
+ Questão: 1
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa Concurso</title>
+</head>
+
+<body>
+    <h1>Programa Concurso</h1>
+    <p>Candidato:
+        <input type="text" id="inNome" autofocus>
+    </p>
+    <p>Nº de Acertos:
+        <input type="text" id="inAcertos">
+        <input type="button" value="Adicionar" id="btAdicionar">
+    </p>
+    <p>
+        <input type="button" value="Listar Todos" id="btListar">
+        <input type="button" value="Aprovados 2ª Etapa" id="btAprovados">
+    </p>
+    <pre id="outLista"></pre>
+
+    <script>
+        var candidatos = []
+        function adicionarCandidatos() {
+            var nome = document.getElementById("inNome").value
+            var acertos = Number(document.getElementById("inAcertos").value)
+
+            if (nome == "" || acertos == 0 || isNaN(acertos)) {
+                alert("Informe os dados corretamente...")
+                inNome.focus()
+                return
+            }
+
+            candidatos.push({ nome: nome, acertos: acertos })
+
+            inNome.value = ""
+            inAcertos.value = ""
+            inNome.focus()
+
+            listarCandidatos()
+        }
+        var btAdicionar = document.getElementById("btAdicionar").addEventListener("click", adicionarCandidatos)
+
+        function listarCandidatos() {
+
+            if (candidatos.length == 0) {
+                alert("Não há candidatos na lista")
+                inNome.focus()
+                return
+            }
+
+            var lista = ""
+
+            for (var i = 0; i < candidatos.length; i++) {
+                lista += candidatos[i].nome + " - Acertos: " + candidatos[i].acertos + "\n"
+            }
+
+            outLista.textContent = lista
+        }
+        var btListar = document.getElementById("btListar").addEventListener("click", listarCandidatos)
+
+        function candidatosAprovados() {
+            var numeroAcertos = Number(prompt("Número de acertos para aprovação?"))
+
+            if (numeroAcertos == 0 || isNaN(numeroAcertos)) {
+                alert("Digite um número válido...")
+                return
+            }
+
+            var Aprovados = ""
+
+            for (var i = 0; i < candidatos.length; i++) {
+                if (candidatos[i].acertos >= numeroAcertos) {
+                    Aprovados += candidatos[i].nome + " - Acertos: " + candidatos[i].acertos + "\n"
+                }
+            }
+
+            if (Aprovados == "") {
+                outLista.textContent = "Não há candidatos com acertos acima de " + numeroAcertos
+            } else {
+                outLista.textContent = "Candidatos aprovados: " + "\n-------------------\n" + Aprovados
+            }
+        }
+        var btAprovados = document.getElementById("btAprovados").addEventListener("click", candidatosAprovados)
+    </script>
+</body>
+
+</html>
